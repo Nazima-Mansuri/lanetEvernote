@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context="com.example.lcom67.demoapp.WelcomeActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar">
+        </include>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/my_recycler_view"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/value_16dp"
+            android:layout_marginRight="@dimen/value_16dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <com.github.clans.fab.FloatingActionMenu
+            android:id="@+id/displayMenus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/value_16dp"
+            android:layout_marginLeft="@dimen/value_16dp"
+            android:layout_marginRight="@dimen/value_16dp"
+            fab:menu_animationDelayPerItem="55"
+            fab:menu_backgroundColor="@color/transperantWhite"
+            fab:menu_buttonSpacing="@dimen/value_0dp"
+            fab:menu_colorNormal="@color/colorPrimary"
+            fab:menu_colorPressed="@color/colorPrimary"
+            fab:menu_colorRipple="@color/Orange"
+            fab:menu_fab_size="normal"
+            fab:menu_icon="@drawable/fab_add"
+            fab:menu_labels_colorNormal="@color/Gray"
+            fab:menu_labels_colorPressed="@color/colorPrimary"
+            fab:menu_labels_colorRipple="@color/colorPrimary"
+            fab:menu_labels_cornerRadius="@dimen/value_2dp"
+            fab:menu_labels_ellipsize="none"
+            fab:menu_labels_margin="@dimen/value_0dp"
+            fab:menu_labels_maxLines="-1"
+            fab:menu_labels_padding="@dimen/value_8dp"
+            fab:menu_labels_position="left"
+            fab:menu_labels_showShadow="true"
+            fab:menu_labels_singleLine="false"
+            fab:menu_labels_textColor="@color/colorPrimary"
+            fab:menu_labels_textSize="@dimen/value_15sp"
+            fab:menu_openDirection="up"
+            fab:menu_shadowColor="@color/lightGreen"
+            fab:menu_shadowRadius="@dimen/value_4dp"
+            fab:menu_shadowXOffset="@dimen/value_1dp"
+            fab:menu_shadowYOffset="@dimen/value_4dp"
+            fab:menu_showShadow="true">
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/imgNote"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_note_add_white_24dp"
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorPrimaryDark"
+                fab:fab_label="@string/addNote"
+                fab:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/imgHandwriring"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_brush"
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorPrimaryDark"
+                fab:fab_label="@string/handwriting"
+                fab:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/imgCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_action_camera"
+                app:fab_colorNormal="@color/colorPrimary"
+                app:fab_colorPressed="@color/colorPrimaryDark"
+                fab:fab_label="@string/camera"
+                fab:fab_size="mini" />
+        </com.github.clans.fab.FloatingActionMenu>
+
+    </FrameLayout>
+
+</LinearLayout>

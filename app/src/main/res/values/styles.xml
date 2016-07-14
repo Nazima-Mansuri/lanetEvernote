@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="titleStyleListView">
+        <item name="android:textSize">@dimen/value_15dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/Orange</item>
+        <item name="android:fontFamily">Arial</item>
+        <item name="android:paddingLeft"> @dimen/value_15dp</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="descriptionStyle">
+        <item name="android:textSize">@dimen/value_20sp</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:textColor">@color/Orange</item>
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">Arial</item>
+        <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">gravity</item>
+    </style>
+
+</resources>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_display_user_data"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lcom67.demoapp.DisplayUserData"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            android:id="@+id/tool_bar"
+            layout="@layout/tool_bar">
+        </include>
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/value_200dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/Gray">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/value_70dp"
+            android:layout_height="@dimen/value_70dp"
+            android:src="@mipmap/ic_launcher"
+            app:civ_border_width="@dimen/value_2dp"
+            app:civ_border_color="@color/offWhite"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtUsername"
+            android:layout_marginTop="@dimen/value_5dp"
+            android:gravity="center"
+            android:textSize="@dimen/value_15dp"
+            android:textColor="@color/Black" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtEmailId"
+            android:layout_marginTop="@dimen/value_10dp"
+            android:gravity="center"
+            android:textSize="@dimen/value_10dp"
+            android:textColor="@color/colorAccent"/>
+    </LinearLayout>
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/value_16dp"
+            android:paddingRight="@dimen/value_16dp"
+            android:id="@+id/etUserName"
+            android:layout_marginTop="@dimen/value_70dp"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

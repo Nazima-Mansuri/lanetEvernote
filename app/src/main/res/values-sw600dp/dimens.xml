@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="value_20dp">128dp</dimen>
+    <dimen name="value_40dp">48dp</dimen>
+    <dimen name="value_152dp">152dp</dimen>
+    <dimen name="value_48dp">56dp</dimen>
+
+</resources>
