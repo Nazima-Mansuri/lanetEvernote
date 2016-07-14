@@ -16,6 +16,9 @@ import com.example.lcom67.demoapp.Beans.Contacts;
 
 import java.util.HashMap;
 
+/***
+ * @author LaNet
+ */
 public class WelcomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "WelcomeActivity";
