@@ -27,7 +27,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".AboutusActivity" />
-        <activity android:name=".LogOut" />
         <activity android:name=".UpdateData" />
         <activity android:name=".RecyclerViewActivity" />
         <activity android:name=".DrawInCanvasActivity" />
@@ -39,7 +38,6 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".OptionMenuActivity" />
         <activity android:name=".CameraActivity" />
         <activity android:name=".DisplayUserData" />
     </application>
