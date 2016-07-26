@@ -15,7 +15,7 @@
     <style name="titleStyleListView">
         <item name="android:textSize">@dimen/value_15dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/Orange</item>
+        <item name="android:textColor">@color/Blue</item>
         <item name="android:fontFamily">Arial</item>
         <item name="android:paddingLeft"> @dimen/value_15dp</item>
         <item name="android:textAlignment">textStart</item>
@@ -25,7 +25,7 @@
     <style name="descriptionStyle">
         <item name="android:textSize">@dimen/value_20sp</item>
         <item name="android:textStyle">bold|italic</item>
-        <item name="android:textColor">@color/Orange</item>
+        <item name="android:textColor">@color/Blue</item>
         <item name="android:fontFamily" tools:targetApi="jelly_bean">Arial</item>
         <item name="android:textAlignment" tools:targetApi="jelly_bean_mr1">gravity</item>
     </style>
@@ -33,6 +33,18 @@
     <style name="HeaderTitleStyle" parent="@android:style/TextAppearance">
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="forgotpassword">
+        <item name="android:textColor">@color/Blue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginLeft">@dimen/value_20dp</item>
+        <item name="android:layout_marginRight">@dimen/value_20dp</item>
+        <item name="android:paddingLeft">@dimen/value_10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:text">@string/forgotpassword</item>
     </style>
 
 </resources>
