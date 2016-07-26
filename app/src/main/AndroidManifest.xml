@@ -12,7 +12,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -20,11 +20,7 @@
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".AddNotes" />
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".AboutusActivity" />
         <activity android:name=".UpdateData" />
@@ -40,6 +36,13 @@
 
         <activity android:name=".CameraActivity" />
         <activity android:name=".DisplayUserData" />
+        <activity android:name=".TabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

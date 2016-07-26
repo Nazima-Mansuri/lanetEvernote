@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/Undo"
-        android:title="Undo"
         android:icon="@drawable/ic_undo"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always"
+        android:title="" />
     <item
         android:id="@+id/Redo"
-        android:title="Redo"
         android:icon="@drawable/ic_redo"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always"
+        android:title="" />
     <item
         android:id="@+id/save"
         android:title="Save"

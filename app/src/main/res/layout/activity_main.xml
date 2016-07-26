@@ -8,30 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cardview_light_background"
         android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/value_40dp"
-            android:layout_alignParentTop="true"
-            android:background="@color/Gray"
-            android:orientation="horizontal">
-
-
-            <android.support.design.widget.AppBarLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/AppTheme.AppBarOverlay">
-
-                <include
-                    android:id="@+id/tool_bar"
-                    layout="@layout/tool_bar"></include>
-
-            </android.support.design.widget.AppBarLayout>
-
-        </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,67 +17,90 @@
             android:layout_marginLeft="@dimen/value_16dp"
             android:layout_marginRight="@dimen/value_16dp"
             android:layout_marginTop="@dimen/value_16dp"
-            android:background="@drawable/greybackground"
             android:orientation="vertical">
 
-
-            <EditText
-                android:id="@+id/eName"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/value_40dp"
-                android:layout_marginTop="@dimen/value_30dp"
-                android:background="@color/offWhite"
-                android:hint="@string/hint_name"
-                android:imeOptions="actionNext"
-                android:maxLines="1"
-                android:paddingLeft="@dimen/value_5dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/value_16dp">
 
-            <EditText
-                android:id="@+id/eEmail"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/value_40dp"
-                android:layout_marginTop="@dimen/value_15dp"
-                android:background="@color/offWhite"
-                android:hint="@string/hint_email"
-                android:imeOptions="actionNext"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:paddingLeft="@dimen/value_5dp" />
+                <EditText
+                    android:id="@+id/eName"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/value_40dp"
+                    android:layout_marginTop="@dimen/value_30dp"
+                    android:hint="@string/hint_name"
+                    android:imeOptions="actionNext"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/value_5dp" />
 
-            <EditText
-                android:id="@+id/ePasswd"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/value_40dp"
-                android:layout_marginTop="@dimen/value_15dp"
-                android:background="@color/offWhite"
-                android:hint="@string/hint_password"
-                android:imeOptions="actionNext"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:paddingLeft="@dimen/value_5dp" />
+            </android.support.design.widget.TextInputLayout>
 
-            <EditText
-                android:id="@+id/eMobile"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/value_40dp"
-                android:layout_marginTop="@dimen/value_15dp"
-                android:background="@color/offWhite"
-                android:hint="@string/hint_mobile"
-                android:imeOptions="actionNext"
-                android:inputType="number"
-                android:maxLines="1"
-                android:paddingLeft="@dimen/value_5dp" />
+           <android.support.design.widget.TextInputLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
 
-            <EditText
-                android:id="@+id/eAddres"
+               <EditText
+                   android:id="@+id/eEmail"
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/value_40dp"
+                   android:layout_marginTop="@dimen/value_15dp"
+                   android:hint="@string/hint_email"
+                   android:imeOptions="actionNext"
+                   android:inputType="textEmailAddress"
+                   android:maxLines="1"
+                   android:paddingLeft="@dimen/value_5dp" />
+
+           </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/value_40dp"
-                android:layout_marginTop="@dimen/value_15dp"
-                android:background="@color/offWhite"
-                android:hint="@string/hint_address"
-                android:imeOptions="actionDone"
-                android:maxLines="1"
-                android:paddingLeft="@dimen/value_5dp" />
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/ePasswd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/value_40dp"
+                    android:layout_marginTop="@dimen/value_15dp"
+                    android:hint="@string/hint_password"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/value_5dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/eMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/value_40dp"
+                    android:layout_marginTop="@dimen/value_15dp"
+                    android:hint="@string/hint_mobile"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/value_5dp" />
+            </android.support.design.widget.TextInputLayout>
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/eAddres"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/value_40dp"
+                    android:layout_marginTop="@dimen/value_15dp"
+                    android:hint="@string/hint_address"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:paddingLeft="@dimen/value_5dp" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/btnSubmit"
@@ -108,9 +108,9 @@
                 android:layout_height="@dimen/value_40dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/value_16dp"
-                android:background="@drawable/btn"
                 android:text="@string/str_submit"
-                android:textColor="@color/Whitetext" />
+                android:textColor="@color/Whitetext"
+                android:background="@color/Blue"/>
 
         </LinearLayout>
 

@@ -4,59 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context="com.example.lcom67.demoapp.LoginActivity">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <include
-            android:id="@+id/tool_bar"
-            layout="@layout/tool_bar">
-        </include>
-
-    </android.support.design.widget.AppBarLayout>
-</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="1"
-        android:gravity="center"
         android:layout_marginLeft="@dimen/value_16dp"
         android:layout_marginRight="@dimen/value_16dp">
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/value_40dp"
-            android:inputType="textEmailAddress"
-            android:ems="10"
-            android:id="@+id/eEmailId"
-            app:layout_constraintLeft_toLeftOf="@+id/activity_login"
-            android:layout_marginTop="@dimen/value_70dp"
-            android:layout_marginLeft="@dimen/value_20dp"
-            android:layout_marginRight="@dimen/value_20dp"
-            android:paddingLeft="@dimen/value_10dp"
-            android:hint="@string/hint_email"
-            android:background="@drawable/rounded_edittext"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/value_16dp">
 
-        <EditText
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/eEmailId"
+                app:layout_constraintLeft_toLeftOf="@+id/activity_login"
+                android:layout_marginTop="@dimen/value_70dp"
+                android:layout_marginLeft="@dimen/value_20dp"
+                android:layout_marginRight="@dimen/value_20dp"
+                android:paddingLeft="@dimen/value_10dp"
+                android:hint="@string/hint_email" />
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/value_40dp"
-            android:id="@+id/ePassword"
-            app:layout_constraintLeft_toLeftOf="@+id/activity_login"
-            android:layout_marginTop="@dimen/value_40dp"
-            android:hint="@string/hint_password"
-            android:inputType="textPassword"
-            android:paddingLeft="@dimen/value_10dp"
-            android:layout_marginLeft="@dimen/value_20dp"
-            android:layout_marginRight="@dimen/value_20dp"
-            android:background="@drawable/rounded_edittext"/>
+            android:layout_height="wrap_content">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/value_40dp"
+                android:id="@+id/ePassword"
+                app:layout_constraintLeft_toLeftOf="@+id/activity_login"
+                android:layout_marginTop="@dimen/value_40dp"
+                android:hint="@string/hint_password"
+                android:inputType="textPassword"
+                android:paddingLeft="@dimen/value_10dp"
+                android:layout_marginLeft="@dimen/value_20dp"
+                android:layout_marginRight="@dimen/value_20dp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/value_16dp"
+            android:id="@+id/cb_show_pasword"
+            android:text=" Show Password"/>
 
         <Button
             android:layout_width="@dimen/value_152dp"
@@ -66,17 +67,14 @@
             app:layout_constraintLeft_toLeftOf="@+id/activity_login"
             app:layout_constraintRight_toRightOf="@+id/activity_login"
             android:layout_marginTop="@dimen/value_20dp"
-            android:background="@drawable/login"/>
+            android:background="@color/Blue"
+            android:text="@string/Login"
+            android:textColor="@color/Whitetext"/>
 
         <TextView
-            android:text="@string/str_register_user"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/txtRegister"
-            app:layout_constraintLeft_toLeftOf="@+id/btnLogin"
-            app:layout_constraintRight_toRightOf="@+id/btnLogin"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/value_40dp"/>
+            />
 
     </LinearLayout>
 
