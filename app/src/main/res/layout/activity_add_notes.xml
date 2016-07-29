@@ -33,7 +33,8 @@
             android:id="@+id/eTitle_notes"
             android:hint="@string/hint_Title"
             android:layout_marginTop="@dimen/value_15dp"
-            />
+            android:layout_marginLeft="@dimen/value_16dp"
+            android:layout_marginRight="@dimen/value_16dp"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -41,8 +42,9 @@
             android:id="@+id/eDescription"
             android:hint="@string/hint_description"
             android:layout_below="@id/eTitle_notes"
-            android:layout_marginTop="@dimen/value_30dp"
-            />
+            android:layout_marginTop="@dimen/value_20dp"
+            android:layout_marginLeft="@dimen/value_16dp"
+            android:layout_marginRight="@dimen/value_16dp"/>
 
         <Button
             android:layout_width="wrap_content"

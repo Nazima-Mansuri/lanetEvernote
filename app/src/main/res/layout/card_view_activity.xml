@@ -11,8 +11,8 @@
         android:layout_gravity="center"
         android:layout_width="match_parent"
         android:layout_height="@dimen/value_76dp"
-        android:layout_marginTop="@dimen/value_10dp"
-        android:layout_marginBottom="@dimen/value_10dp"
+        android:layout_marginTop="@dimen/value_5dp"
+        android:layout_marginBottom="@dimen/value_5dp"
         card_view:cardCornerRadius="@dimen/value_5dp"
         android:layout_marginLeft="@dimen/value_5dp"
         android:layout_marginRight="@dimen/value_5dp"
@@ -36,14 +36,15 @@
                     android:id="@+id/tTitle"
                     android:text="@string/title"
                     style="@style/titleStyleListView"
-                    android:layout_weight="1" />
+                    android:layout_weight=".5"
+                    android:layout_marginTop="@dimen/value_10dp"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:id="@+id/dateTitle"
-                    android:text="@string/title"
-                    style="@style/titleStyleListView"
+                    android:paddingLeft="@dimen/value_15dp"
+                    android:textColor="@color/Blue"
                     android:layout_weight="1" />
             </LinearLayout>
             <LinearLayout

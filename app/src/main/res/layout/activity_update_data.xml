@@ -34,15 +34,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/showImage"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:layout_marginTop="@dimen/value_25dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/value_40dp"
-            android:id="@+id/tDescription"
-            android:layout_marginTop="@dimen/value_20sp"
-            android:layout_marginLeft="@dimen/value_16dp"
-            android:layout_marginRight="@dimen/value_16dp"
-            style="@style/descriptionStyle"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="@dimen/value_40dp"
+        android:layout_weight=".7"
+        android:id="@+id/tDescription"
+        android:layout_marginLeft="@dimen/value_16dp"
+        android:layout_marginRight="@dimen/value_16dp"
+        style="@style/descriptionStyle"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/updatereminder"
+        android:src="@drawable/ic_alarm"
+        android:layout_marginRight="@dimen/value_25dp"
+        android:tint="@color/Blue"/>
+</LinearLayout>
+
+
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/editdata"

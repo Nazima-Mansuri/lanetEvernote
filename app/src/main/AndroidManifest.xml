@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
 
     <application
         android:allowBackup="true"
@@ -19,9 +21,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".WelcomeActivity" />
         <activity android:name=".AddNotes" />
-        <activity android:name=".LoginActivity">
-
-        </activity>
+        <activity android:name=".LoginActivity" />
         <activity android:name=".AboutusActivity" />
         <activity android:name=".UpdateData" />
         <activity android:name=".RecyclerViewActivity" />
@@ -43,6 +43,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ReminderActivity" />
+        <receiver android:name="com.example.lcom67.AlarmReceiver" android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.ohs.example.myEvent" />
+            </intent-filter>
+        </receiver>
+        <activity android:name=".SetReminderSongActivity"></activity>
     </application>
 
 </manifest>
