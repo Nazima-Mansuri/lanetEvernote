@@ -8,8 +8,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-public class AboutusActivity extends AppCompatActivity {
+/**
+ * This is About Us Activity..
+ */
 
+public class AboutusActivity extends AppCompatActivity
+{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

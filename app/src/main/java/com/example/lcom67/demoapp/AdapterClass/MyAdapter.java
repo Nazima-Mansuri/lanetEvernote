@@ -2,6 +2,7 @@ package com.example.lcom67.demoapp.AdapterClass;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,10 +14,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.daimajia.swipe.SwipeLayout;
 import com.example.lcom67.demoapp.Beans.Contacts;
+import com.example.lcom67.demoapp.Connection.DBConnection;
 import com.example.lcom67.demoapp.R;
+import com.example.lcom67.demoapp.RecyclerViewActivity;
+import com.example.lcom67.demoapp.UpdateData;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,41 +38,41 @@ import java.util.List;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
 {
     private List<Contacts> contactsList;
-    Contacts contacts;
     Context context;
     private AdapterView.OnItemClickListener mItemClickListener;
+    private DBConnection helper;
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+    public MyAdapter() {
+
+    }
+
+
+    public class MyViewHolder extends RecyclerView.ViewHolder
     {
-        public TextView title;
-        public ImageView Image;
+        public TextView title,dateTitle;
+        public ImageView Image,delete;
         public CardView mCardView;
-        public TextView mTextViewTitle;
+        RelativeLayout rl_main;
 
         public MyViewHolder(View view)
         {
             super(view);
+            delete = (ImageView) view.findViewById(R.id.trash);
             mCardView = (CardView) view.findViewById(R.id.card_view);
             title = (TextView) view.findViewById(R.id.tTitle);
+            dateTitle = (TextView) view.findViewById(R.id.dateTitle);
             Image = (ImageView) view.findViewById(R.id.displayImage);
-
-            title.setOnClickListener(this);
-            Image.setOnClickListener(this);
-            view.setOnClickListener(this);
+            rl_main = (RelativeLayout) view.findViewById(R.id.rl_Main);
         }
 
-        @Override
-        public void onClick(View view)
-        {
-
-        }
 
     }
 
     public MyAdapter(Context context, List<Contacts> contactsList)
     {
         this.context = context;
+        helper = new DBConnection(context);
         this.contactsList = contactsList;
     }
 
@@ -73,21 +80,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_view_activity, parent, false);
 
-        return new MyViewHolder(itemView);
+            //inflate your layout and pass it to view holder
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.card_view_activity, parent, false);
+            SwipeLayout item = (SwipeLayout) view.findViewById(R.id.swipe_item);
+            item.setShowMode(SwipeLayout.ShowMode.PullOut);
+            item.addDrag(SwipeLayout.DragEdge.Right, item.findViewById(R.id.bottom_wrapper_2));
+            return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position)
+    public void onBindViewHolder(MyViewHolder holder, final int position)
     {
 
-        Contacts contacts = contactsList.get(position);
+        final Contacts contacts = contactsList.get(position);
 
         holder.title.setText(contacts.getNotes_Title());
 
-        if (contacts.getmImagePath() != null) {
+        if(contacts.getReminder_date() != null)
+        {
+            holder.dateTitle.setText(contacts.getReminder_date());
+        }
+        else if (contacts.getmImagePath() != null)
+        {
             holder.title.setText(" Thumb_" + contacts.getmImagePath());
             ContextWrapper cw = new ContextWrapper(context.getApplicationContext());
             // path to /data/data/yourapp/app_data/imageDir
@@ -99,7 +115,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-        } else if (contacts.getCameraImage() != null)
+        }
+        else if (contacts.getCameraImage() != null)
         {
             holder.title.setText("SnapShot");
             ContextWrapper cw = new ContextWrapper(context.getApplicationContext());
@@ -114,6 +131,26 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
             }
         }
 
+        holder.rl_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                Intent intent = new Intent(context, UpdateData.class);
+                intent.putExtra("noteId", contactsList.get(position).getId());
+                context.startActivity(intent);
+            }
+        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                long noteId = contactsList.get(position).getId();
+                helper.deleteNote(noteId);
+                contactsList.remove(position);
+                notifyDataSetChanged();
+                Toast.makeText(context,"Note Deleted..!",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -123,6 +160,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>
 
     public void setOnItemClickListener(final AdapterView.OnItemClickListener mItemClickListener) {
         this.mItemClickListener = mItemClickListener;
+    }
+
+    public void remove(int position)
+    {
+        contactsList.remove(position);
+        notifyItemRemoved(position);
     }
 
 }

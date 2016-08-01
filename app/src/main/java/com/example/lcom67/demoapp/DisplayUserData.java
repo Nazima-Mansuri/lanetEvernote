@@ -35,6 +35,9 @@ import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+/**
+ * This activity for to Display User profile and UPDATE user Data
+ */
 public class DisplayUserData extends AppCompatActivity {
     CircleImageView ProfileImage;
     TextView Username, EmailId;

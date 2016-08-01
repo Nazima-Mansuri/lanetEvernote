@@ -25,6 +25,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * This activity is for to take image from camera and save in specified folder.
+ **/
+
 public class CameraActivity extends AppCompatActivity {
     ImageView image;
     private String ImagePath;

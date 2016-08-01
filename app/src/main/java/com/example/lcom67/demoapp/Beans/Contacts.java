@@ -1,5 +1,9 @@
 package com.example.lcom67.demoapp.Beans;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by lcom67 on 1/7/16.
  */
@@ -17,6 +21,8 @@ public class Contacts {
 
     String mImagePath;
     String cameraImage;
+
+    Date reminder_date = null;
 
 
     public Contacts() {
@@ -111,6 +117,19 @@ public class Contacts {
 
     public void setCameraImage(String cameraImage) {
         this.cameraImage = cameraImage;
+    }
+
+    public String getReminder_date()
+    {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
+        if (reminder_date != null)
+            return dateFormat.format(reminder_date);
+        else
+            return null;
+    }
+
+    public void setReminder_date(Date reminder_date) {
+        this.reminder_date = reminder_date;
     }
 
 }

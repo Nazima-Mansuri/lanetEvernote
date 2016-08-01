@@ -14,6 +14,9 @@ import android.widget.EditText;
 import com.example.lcom67.demoapp.Connection.DBConnection;
 import com.example.lcom67.demoapp.Beans.Contacts;
 
+/*
+this is SIGNUP activity..
+ */
 public class MainActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
@@ -27,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
-        toolbar.setTitle("Sign Up ");
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+//        toolbar.setTitle("Sign Up ");
 
         name = (EditText) findViewById(R.id.eName);
         email = (EditText) findViewById(R.id.eEmail);

@@ -17,11 +17,12 @@ import com.example.lcom67.demoapp.Beans.Contacts;
 import java.util.HashMap;
 
 /***
- * @author LaNet
+ * This is Welcome Activity Which is not used in this project..
+ * It is just a file for reference of List View..
  */
 public class WelcomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private static final String TAG = "WelcomeActivity";
+//    private static final String TAG = "WelcomeActivity";
     private Toolbar toolbar;
     DBConnection db = new DBConnection(this);
     Contacts contact = new Contacts();

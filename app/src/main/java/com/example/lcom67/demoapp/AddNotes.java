@@ -13,6 +13,10 @@ import android.widget.Toast;
 import com.example.lcom67.demoapp.Connection.DBConnection;
 import com.example.lcom67.demoapp.Beans.Contacts;
 
+/**
+ * This activity is used for to INSERT and UPDATE notes in database..
+ */
+
 public class AddNotes extends AppCompatActivity {
 
     EditText title, description;
@@ -35,7 +39,8 @@ public class AddNotes extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         noteId = getIntent().getLongExtra("noteId", -1);
-        if (noteId != -1) {
+        if (noteId != -1)
+        {
             Submit.setText("Update");
             title.setText(db.getTitle(noteId));
             description.setText(db.getDescription(noteId));
@@ -64,12 +69,15 @@ public class AddNotes extends AppCompatActivity {
                 id = prefs.getLong("SignUp_Id", 0);
                 contact = new Contacts();
 
-                if (noteId != -1) {
+                if (noteId != -1)
+                {
                     db.updateData(noteId, str_title, str_description);
                     Toast.makeText(AddNotes.this, "Notes Updated..", Toast.LENGTH_SHORT).show();
                     Intent ii = new Intent(AddNotes.this, RecyclerViewActivity.class);
                     startActivity(ii);
-                } else {
+                }
+                else
+                {
                     contact.setNotes_Title(str_title);
                     contact.setNotes_Description(str_description);
                     contact.setId(id);

@@ -9,7 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.lcom67.demoapp.Beans.Contacts;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,7 +27,6 @@ public class DBConnection extends SQLiteOpenHelper {
 
     public static final String TABLE_SIGNUP = "signup";
     public static final String TABLE_NOTES = "notes";
-    public static final String TABLE_IMAGE = "images";
 
     public static final String SIGNUP_ID = "id";
     public static final String NAME = "name";
@@ -39,6 +41,8 @@ public class DBConnection extends SQLiteOpenHelper {
 
     public static final String IMAGE_PATH = "image_path";
     public static final String CAMERA_IMAGE = "camera_image";
+    public static final String REMINDER = "reminder_datetime";
+
 
     public DBConnection(Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -48,7 +52,8 @@ public class DBConnection extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, 1, errorHandler);
     }
 
-    public long AddData(Contacts contact) {
+    public long AddData(Contacts contact)
+    {
         SQLiteDatabase db1 = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
@@ -63,15 +68,22 @@ public class DBConnection extends SQLiteOpenHelper {
         return transactId;
     }
 
-    public void AddNotes(Contacts contact) {
+    public void AddNotes(Contacts contact)
+    {
         db = this.getWritableDatabase();
 
         ContentValues cv = new ContentValues();
         cv.put(NOTES_TITLE, contact.getNotes_Title());
         cv.put(DESCRIPTION, contact.getNotes_Description());
         cv.put(IMAGE_PATH, contact.getmImagePath());
-        cv.put(CAMERA_IMAGE, contact.getCameraImage());
-        cv.put(SIGNUP_ID, contact.getId());
+        if(contact.getReminder_date() != null) {
+            cv.put(REMINDER,contact.getReminder_date());
+        }
+        else {
+            cv.put(CAMERA_IMAGE, contact.getCameraImage());
+        }
+            cv.put(SIGNUP_ID, contact.getId());
+
 
         db.insert(TABLE_NOTES, null, cv);
         db.close();
@@ -182,9 +194,36 @@ public class DBConnection extends SQLiteOpenHelper {
         return returnString;
     }
 
+    public String getDateTime(long id)
+    {
+        db = this.getReadableDatabase();
+
+        String query = new String("select " + REMINDER + " from " + TABLE_NOTES + " where " + NOTES_ID + " = " + id);
+        Cursor result = db.rawQuery(query, null);
+
+        String returnString = ""; // Your default if none is found
+
+        if (result.moveToFirst()) {
+            Contacts contact = new Contacts();
+            returnString = result.getString(0);
+            contact.setNotes_Title(returnString);
+        }
+        result.close();
+
+        return returnString;
+    }
+
     public void deleteNote(long id) {
         db = this.getWritableDatabase();
         String deleteQuery = "delete from " + TABLE_NOTES + " where " + NOTES_ID + "= " + id;
+        db.execSQL(deleteQuery);
+        db.close();
+    }
+
+    public void clearReminder(long id , String date)
+    {
+        db = this.getWritableDatabase();
+        String deleteQuery = "delete from " + TABLE_NOTES + " where " + NOTES_ID + " = " + id + " OR " + REMINDER + " = " + date;
         db.execSQL(deleteQuery);
         db.close();
     }
@@ -226,13 +265,31 @@ public class DBConnection extends SQLiteOpenHelper {
 
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
-            do {
+            do
+            {
                 Contacts contact = new Contacts();
                 contact.setId(Integer.parseInt(cursor.getString(0)));
                 contact.setNotes_Title(cursor.getString(1));
                 contact.setNotes_Description(cursor.getString(2));
                 contact.setmImagePath(cursor.getString(3));
                 contact.setCameraImage(cursor.getString(4));
+
+                String date = cursor.getString(5);
+                if(date !=null)
+                {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
+                    Date d=new Date();
+                    try
+                    {
+                        d =  dateFormat.parse(date);
+                        contact.setReminder_date(d);
+
+                    } catch (ParseException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+
+                }
 
                 contactList.add(contact);
             } while (cursor.moveToNext());
@@ -272,6 +329,15 @@ public class DBConnection extends SQLiteOpenHelper {
         return db.update(TABLE_SIGNUP, cv, SIGNUP_ID + "=" + Id, null) > 0;
     }
 
+    //Update DateTime of Reminder
+    public boolean updateDateTime(long Id , Date datetime)
+    {
+        ContentValues cv = new ContentValues();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm aa");
+        cv.put(REMINDER,dateFormat.format(datetime));
+        return db.update(TABLE_NOTES, cv , NOTES_ID + "=" + Id ,null ) >0;
+    }
+
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String CREATE_SIGNUP_TABLE = "create table " + TABLE_SIGNUP + " (" + SIGNUP_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," + NAME
@@ -279,7 +345,7 @@ public class DBConnection extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_SIGNUP_TABLE);
 
         String CREATE_NOTES = "create table " + TABLE_NOTES + " (" + NOTES_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                NOTES_TITLE + " TEXT," + DESCRIPTION + " TEXT," + IMAGE_PATH + " TEXT ," + CAMERA_IMAGE + " TEXT ," + SIGNUP_ID + "  INTEGER )";
+                NOTES_TITLE + " TEXT," + DESCRIPTION + " TEXT," + IMAGE_PATH + " TEXT ," + CAMERA_IMAGE + " TEXT ," + REMINDER  + " DATETIME ,"  + SIGNUP_ID + "  INTEGER )";
         sqLiteDatabase.execSQL(CREATE_NOTES);
     }
 

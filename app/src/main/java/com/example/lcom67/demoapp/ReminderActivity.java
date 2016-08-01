@@ -3,13 +3,11 @@ package com.example.lcom67.demoapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class LogOut extends AppCompatActivity {
+public class ReminderActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_out);
-        finish();
+        setContentView(R.layout.activity_reminder);
     }
 }

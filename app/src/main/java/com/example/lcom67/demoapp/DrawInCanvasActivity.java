@@ -37,6 +37,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+/**
+ * This activity is used for to DRAW in CANVAS and store that canvas as image in DATABASE..
+ * And UPDATE canvas
+ */
 public class DrawInCanvasActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     DBConnection helper = new DBConnection(this);
@@ -92,20 +96,26 @@ public class DrawInCanvasActivity extends AppCompatActivity implements AdapterVi
 
         // path to /data/data/yourapp/app_data/imageDir
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
-        if (noteId != -1) {
-            try {
+        if (noteId != -1)
+        {
+            try
+            {
                 toolbar.setTitle(helper.getImageName(noteId));
                 File f = new File(directory, helper.getImageName(noteId));
                 Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
                 imageView.setImageBitmap(b);
-            } catch (FileNotFoundException e) {
+            }
+            catch (FileNotFoundException e)
+            {
                 e.printStackTrace();
             }
         }
         btnReset = (Button) findViewById(R.id.button1);
-        btnReset.setOnClickListener(new View.OnClickListener() {
+        btnReset.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view)
+            {
                 fl_main.removeView(customCanvas);
                 customCanvas = new CanvasView(DrawInCanvasActivity.this);
                 customCanvas.setPaintStrokeColor(selectedColor);
@@ -183,7 +193,8 @@ public class DrawInCanvasActivity extends AppCompatActivity implements AdapterVi
     }
 
     @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
+    public void onNothingSelected(AdapterView<?> adapterView)
+    {
 
 
     }
@@ -250,7 +261,8 @@ public class DrawInCanvasActivity extends AppCompatActivity implements AdapterVi
         return ImagePath;
     }
 
-    public Bitmap screenShot(View view) {
+    public Bitmap screenShot(View view)
+    {
         Bitmap bitmap = Bitmap.createBitmap(view.getWidth(),
                 view.getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
@@ -259,14 +271,17 @@ public class DrawInCanvasActivity extends AppCompatActivity implements AdapterVi
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         getMenuInflater().inflate(R.menu.main2, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case R.id.Undo:
                 customCanvas.undo();
                 return true;
@@ -274,20 +289,27 @@ public class DrawInCanvasActivity extends AppCompatActivity implements AdapterVi
                 customCanvas.redo();
                 return true;
             case R.id.save:
-                if (noteId != -1) {
+                if (noteId != -1)
+                {
                     //update
-                    try {
+                    try
+                    {
                         String path = saveToInternalStorage(screenShot(fl_main));
                         helper.updateImage(noteId, path);
 
                         Intent ii = new Intent(DrawInCanvasActivity.this, RecyclerViewActivity.class);
                         startActivity(ii);
-                    } catch (Exception ex) {
+                    }
+                    catch (Exception ex)
+                    {
                         ex.printStackTrace();
                     }
 
-                } else {
-                    try {
+                }
+                else
+                {
+                    try
+                    {
                         //save
                         String path = saveToInternalStorage(customCanvas.getBitmap());
 
@@ -303,7 +325,9 @@ public class DrawInCanvasActivity extends AppCompatActivity implements AdapterVi
 
                         Intent ii = new Intent(DrawInCanvasActivity.this, RecyclerViewActivity.class);
                         startActivity(ii);
-                    } catch (IOException e) {
+                    }
+                    catch (IOException e)
+                    {
                         e.printStackTrace();
                     }
                 }
@@ -311,7 +335,5 @@ public class DrawInCanvasActivity extends AppCompatActivity implements AdapterVi
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }
 
